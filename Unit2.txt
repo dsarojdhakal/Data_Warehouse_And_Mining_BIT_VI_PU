@@ -1,0 +1,236 @@
+Unit 2 : Data Warehouse and OLAP Technology
+
+
+1. Data Warehouse Architecture
+    A data warehouse is a centralized system for storing clean, organized, and integrated data from multiple sources.
+    It is designed for analysis and decision-making, not daily transaction processing.
+    Main Components:
+        Data Sources – Operational databases, spreadsheets, APIs, external data.
+        ETL Process – Extract (collect), Transform (clean & format), Load (store) data.
+        Data Storage – Relational or multidimensional warehouse database.
+        Metadata – Describes structure, source, and meaning of the stored data.
+        OLAP Tools – Used for fast queries, data exploration, and reporting.
+    Benefits:
+        Consistent, accurate data for decision-making.
+        Historical + current data for trend analysis.
+        Handles complex queries faster than normal databases.
+
+
+2. Steps for the Design and Construction of a Data Warehouse
+    Step 1 – Define Business Requirements
+        Identify what problems the warehouse will solve (e.g., sales trends, customer segmentation).
+        Involve stakeholders – business teams, IT staff, analysts.
+        Make sure the design matches business goals.
+    Step 2 – Design the Data Warehouse Architecture
+        Choose the type based on needs:
+            Centralized – One large warehouse for the entire organization.
+            Data Marts – Smaller, department-focused warehouses.
+            Data Lake – Stores raw, unstructured data.
+            Cloud Warehouse – Like Amazon Redshift, Google BigQuery, Snowflake.
+            Consider scalability, cost, and security before deciding.
+    Step 3 – Select Technology Stack
+        Database – Choose based on data size and query needs.
+        ETL Tools – Talend, Apache NiFi, Hevo, etc.
+        BI & Analytics Tools – Power BI, Tableau, Looker for visualization.
+    Step 4 – Data Integration & ETL Development
+        Gather data from CRM, ERP, sales, and external APIs.
+        Automate ETL for real-time or near real-time updates.
+        ETL Process:
+            Extract – Pull from sources.
+            Transform – Clean, remove duplicates, handle missing values.
+            Load – Store in the warehouse.
+    Step 5 – Data Modeling
+        Choose schema for organizing data:
+            Star Schema – Fact table + dimension tables (simpler).
+            Snowflake Schema – Normalized dimensions (more detailed).
+            Fact tables → numeric data (sales, quantity).
+            Dimension tables → descriptive data (date, location).
+    Step 6 – Data Loading & Testing
+        Initial Load – Fill the warehouse with existing data.
+        Incremental Load – Add only new/updated data regularly.
+        Test for data accuracy, speed, and reliability.
+    Step 7 – Maintain Data Quality & Governance
+        Set data quality standards (accuracy, completeness)
+        Implement validation & cleaning rules.
+        Assign data ownership and control access.
+        Regularly audit and review the system.
+
+
+3. Three-Tier Data Warehouse Architecture
+    Bottom Tier – Data Warehouse Server
+        Main storage layer for integrated, historical, and current data.
+        Can be relational (RDBMS) or multidimensional (MDDB).
+        Data arrives here after ETL.
+    Middle Tier – OLAP Server
+        Connects data storage to user tools.
+        Handles queries, aggregation, and analysis.
+        Types:
+            ROLAP – Works with relational databases via SQL.
+            MOLAP – Uses multidimensional cubes for faster access.
+            HOLAP – Mix of ROLAP + MOLAP.
+    Top Tier – Front-End Tools
+        Interface for reports, dashboards, and ad-hoc queries.
+        Examples: Power BI, Tableau, Excel (OLAP mode).
+        Lets business users explore data without deep technical knowledge.
+
+
+4. OLAP (Online Analytical Processing)
+    OLAP is a technology used to analyze large volumes of data quickly.
+    It organizes data into multiple dimensions so it can be viewed from different angles.
+    Mostly used with data warehouses for decision-making.
+    Supports complex queries like comparisons, trends, and summaries.
+    Fast response for large queries.
+    Easy to compare data from different perspectives.
+    Helps in finding hidden patterns and trends.
+    Types of OLAP:
+        ROLAP – Works on relational databases using SQL queries.
+        MOLAP – Uses multidimensional data cubes for fast analysis.
+        HOLAP – Combines ROLAP and MOLAP features.
+    OLAP Operations are:
+        Roll-up – Summarizing data (e.g., month → year).
+        Drill-down – Going from summary to details (year → month → day).
+        Slice – Looking at data for one dimension (sales in 2024).
+        Dice – Selecting data for multiple dimensions (product A, region X, 2024).
+        Pivot – Rotating data view for better understanding.
+        
+
+5. OLAP Queries
+    Queries that are designed for analysis and reporting.
+    Work on historical and summarized data, not on live transactions.
+    Often use aggregate functions like SUM, AVG, COUNT.
+    Can show data by different dimensions such as time, location, and product.
+    Examples:
+        Total sales by region and product category in 2024.
+        Top 10 customers by purchase amount in the last year.
+        Quarterly revenue comparison for 2022 and 2023.
+    Query Languages Used:
+        SQL – For relational OLAP queries.
+        MDX – For multidimensional OLAP cube queries.
+    Advantages:
+        Quicker than normal SQL on large datasets.
+        Allows interactive analysis without affecting operational systems.
+
+
+
+6.Metadata Repository
+    Central storage of all metadata (data about data).
+    Contains info about source systems, ETL processes, data models, and business rules.
+    Helps in understanding the structure, meaning, and origin of data.
+    Improves data consistency and reduces duplication.
+    Supports impact analysis when making changes.
+    Types:
+        Technical Metadata – Table names, column data types, schema details.
+        Business Metadata – Definitions, KPIs, calculation rules.
+        Operational Metadata – Data load times, job status, error logs.
+
+
+
+9. Data Processing
+        The series of actions to collect, organize, and transform raw data into meaningful information.
+        Involves integrating data from various sources and transforming it to fit analysis needs.
+        Ensures data is clean, consistent, and ready for decision-making.
+
+    Data Integration
+        Combines data from multiple sources into a single, unified view.
+        Involves collecting, cleaning, and merging data.
+        Ensures consistent formats and meanings.
+        Methods: ETL (Extract, Transform, Load), ELT (Extract, Load, Transform), Data Virtualization.
+
+    Data Transformation
+        Changes raw data into the right format and structure for analysis.
+        Includes cleaning data, fixing errors, and organizing it properly.
+        Examples: changing date formats, calculating totals, standardizing names.
+        Ensures data is accurate and easy to use in reports and queries.        
+        Tasks include:
+            Removing duplicates and errors.
+            Handling missing values.
+            Changing data formats (e.g., date formats).
+            Aggregating data (e.g., daily → monthly totals).
+            Standardizing units and naming conventions.
+            Improves data quality and supports accurate analysis.
+
+
+10. Data Reduction
+    Makes large data sets smaller without losing important information.
+    Speeds up data analysis and saves storage space.
+    Helps handle big data efficiently.
+    Faster queries and reports.
+    Less storage space needed.
+    Easier to manage and maintain data.
+    Common tasks:
+        Removing unnecessary columns or attributes.
+        Summarizing detailed data into bigger groups (aggregation).
+        Selecting a smaller, representative sample of the data.
+        Compressing data to reduce size.
+        Eliminating redundant or duplicate data.
+        Reducing data precision when exact detail is not needed.
+    Examples:
+        Combining daily sales data into monthly totals.
+        Using only key columns like date, product, and sales amount.
+        Taking a sample of customers instead of all customers for analysis.
+
+
+
+11. Data Mining Primitives
+    Basic instructions that define a data mining task clearly.
+    Help control what data to analyze and what kind of patterns to find.
+    Allow users to customize mining process without programming.
+
+    What Defines a Data Mining Task?
+        Task Relevant Data
+            Specifies which data set or table to use.
+            Chooses which attributes (columns) to include or exclude.
+            Sets conditions or filters to focus on specific data (e.g., last year’s sales).
+            Can specify data granularity, like daily or monthly data.
+        Kind of Knowledge to be Mined
+            Defines the goal of mining: what patterns or rules to find.
+            Common types:
+            Classification – Assigning data to categories (e.g., spam or not spam).
+            Clustering – Grouping similar data points together.
+            Association Rules – Finding relationships between items (e.g., people who buy X also buy Y).
+            Trend Analysis – Discovering patterns over time.
+            Outlier Detection – Finding unusual or rare data points.
+        Background Knowledge
+            Domain knowledge or rules to guide mining.
+            Can help improve accuracy and reduce irrelevant results.
+
+
+
+12. KDD (Knowledge Discovery in Databases)
+    The overall process of discovering useful knowledge from large sets of data.
+    Involves collecting, cleaning, analyzing, and interpreting data to find meaningful patterns.
+    Helps turn raw data into information that supports decision-making.
+    Steps of KDD are:
+
+    Data Selection
+        Choose relevant data needed for the analysis.
+        Data can come from databases, files, or external sources.
+        Focus on data related to the problem or task.
+
+    Data Preprocessing
+        Clean the data to fix errors and remove noise.
+        Handle missing values by filling or removing them.
+        Remove duplicates and correct inconsistencies
+        Prepare data for smooth analysis.
+
+    Data Transformation
+        Convert data into formats suitable for mining algorithms.
+        Normalize or scale numeric data.
+        Aggregate data if needed (e.g., daily to monthly).
+        Create new features if useful for analysis.
+
+    Data Mining
+        Apply techniques like classification, clustering, or association.
+        Discover patterns, trends, or relationships in the data.
+        Use algorithms to extract meaningful insights.
+        
+    Pattern Evaluation
+        Assess the discovered patterns using interestingness measures.
+        Remove irrelevant, redundant, or obvious patterns.
+        Keep only useful and actionable knowledge.
+
+    Knowledge Presentation
+        Display results in easy-to-understand formats (charts, reports).
+        Use visualization tools for better interpretation.
+        Help users make decisions based on findings.
+
