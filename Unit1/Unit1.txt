@@ -33,8 +33,8 @@ Unit 1
 
 
 4. Definition of Data Mining
-    Data Mining is the process of extracting useful knowledge from a large amount of data.
-    Data Mining is the step in the Knowledge Discovery in Databases (KDD) process that applies algorithms to identify patterns and relationships in data.
+    Data Mining is the process of extracting useful pattern, insights from a large volume of data.
+    Data Mining is the step in the Knowledge Discovery in Databases (KDD) process.
     It is also called Knowledge Mining or Knowledge Extraction.
 
 
@@ -44,7 +44,7 @@ Unit 1
         a. Relational Data Mining – Mining data stored in relational databases (tables, rows, columns).
         b. Transactional Data Mining – Mining data from transaction records such as sales, purchases, and logs.
         c. Object-Oriented Data Mining – Mining complex data types like multimedia, images, audio, and video.
-        d. Spatial Data Mining – Mining data related to geographical locations, maps, and spatial relationships.
+        d. Spatial Data Mining – Mining data related to geographical locations, maps.
         e. Text Mining – Extracting useful information from unstructured text data (documents, web pages).
         f. Web Mining – Mining data from the World Wide Web, including web content, web structure, and web usage.
         g. Time-Series and Sequence Mining – Mining data that changes over time (stock prices, sensor data, weather patterns).
@@ -127,3 +127,6 @@ Unit 1
     Manufacturing – Quality control, supply chain optimization.
     Government – Census data analysis, public policy planning.
     Education – Student performance tracking, course improvement.
+
+
+    

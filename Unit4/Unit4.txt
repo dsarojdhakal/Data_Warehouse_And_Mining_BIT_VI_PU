@@ -1,0 +1,15 @@
+Unit 4: Multidimensional Association Rules
+
+
+4.1 Multidimensional Association Rules
+    Extension of single-dimensional association rules.
+    Uses multiple attributes (dimensions) at the same time.
+    Each dimension represents a different feature of the dataset.
+    Finds patterns involving more than one attribute.
+    Example:
+        Single-dimensional  : {Milk} → {Bread}
+        Multidimensional    : {Milk in Store A, Age 20-30} → {Bread, Gender = Male}
+    Useful in data warehouses with fact and dimension tables.
+    Involves selecting relevant dimensions and finding frequent patterns.
+    Support and confidence are calculated across multiple attributes.
+    Helps in decision making, marketing, and customer behavior analysis.

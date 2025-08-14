@@ -1,0 +1,48 @@
+Unit 5: Classification and Prediction(9)
+
+
+a. What is Classification
+
+    It is a process of assigning data items in a database to predefined classes
+    Predicts class of new or unknown records in a dataset
+    Supervised data mining technique is used
+    Uses attributes/features of records for classification
+    Examples in data mining:
+        Bank database → Customer risk: High / Medium / Low
+        Retail database → Customer response: Yes / No
+        Medical database → Disease: Present / Absent
+
+    Applications of classification in :
+        Fraud detection: Identify suspicious transactions from historical patterns
+        Medical diagnosis: Detect diseases using patient records
+        Customer segmentation: Group customers for targeted marketing
+
+
+
+b. What is Prediction
+
+    It is a process of estimating a numeric or continuous value for new data based on existing data
+    Uses historical data to build a predictive model
+    Predicts unknown or future values of attributes in a dataset
+    Supervised data mining technique
+    Uses features/attributes of records for prediction
+    Examples in data mining:
+        Predicting future sales of a product
+        Estimating temperature or rainfall
+        Forecasting stock prices
+
+
+
+c. Issues Regarding Classification and Prediction
+
+    Data may be incomplete, wrong, or messy
+    It is hard to choose which features are important
+    Model may fit training data too much and fail on new data (overfitting)
+    Model may be too simple and miss patterns (underfitting)
+    Some classes may have very few examples, causing bias
+    Large data makes processing slow and difficult
+    It is difficult to check if the model is really accurate
+    Model may need changes when new data comes
+
+
+d. 

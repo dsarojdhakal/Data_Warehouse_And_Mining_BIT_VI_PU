@@ -1,0 +1,112 @@
+Data Warehouse and Mining
+    (BIT353CO)
+
+Internal     =  70 marks
+Final        =  80 marks
+-------------------------
+Total        = 150 marks
+
+
+Unit 1: Introduction to Data Mining(4)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+    1.1 Introduction to Data Mining
+        1.1.1 Motivation and Importance
+        1.1.2 Definition of Data Mining
+        1.1.3 Kinds of Data Mining
+        1.1.4 Kinds of Pattern
+        1.1.5 Data Mining Technologies
+        1.1.6 Kinds of Application Targeted
+        1.1.7 Major Issues in Data Mining
+
+    1.2 Introduction to Data Warehousing
+        1.2.1 Importance
+        1.2.2 Use
+        1.2.3 Application
+
+
+
+Unit 2: Data Warehouse and OLAP Technology(9)
+
+    2.1 Data Warehouse
+        2.1.1 Data Warehouse Architecture
+        2.1.2 Steps for the Design and Construction of Database
+        2.1.3 A Three-Tier Data Warehouse Architecture
+
+    2.2 OLAP (Online Analytical Processing)
+        2.2.1 OLAP
+        2.2.2 OLAP Queries
+        2.2.3 Metadata Repository
+    
+    2.3 Data Processing
+        2.3.1 Data Integration and Transformation
+        2.3.2 Data Reduction
+    
+    2.4 Data Mining Primitives
+        2.4.1 What Define a Data Mining Tasks?
+        2.4.2 Task-Relevant Data
+        2.4.3 The Kind of Knowledge to be Mined
+    
+    2.5 KDD
+
+
+
+Unit 3: Mining Association Rules in Large Databases(9)
+
+    3.1 Mining Association Rules in Large Database
+    3.2 Association Rule Mining
+    3.3 Market Basket Analysis
+    3.4 Mining: A Roadmap
+    3.5 The Apriori Algorithm
+        3.5.1 Finding Frequent Itemset Using Candidate Generation
+        3.5.2 Generating Association Rules from Frequent Itemsets
+        3.5.3 Improving the Efficiency of Apriori
+    3.6 Mining Frequent Itemset Without Candidate Generation
+    3.7 Multilevel Association Rule
+    3.8 Approaches to Mining Multilevel Association Rules Mining
+
+
+
+Unit 4: Multidimensional Association Rules for Relational Database and Data Warehouse(6)
+    4.1 Multidimensional Association Rules
+    4.2 Mining Quantitative Association Rules
+    4.3 Mining Distance-Based Association Rules
+    4.4 From Association Mining to Correlation Analysis
+
+
+
+Unit 5: Classification and Prediction(9)
+
+    5.1 What is Classification
+    5.2 What is Prediction
+    5.3 Issues Regarding Classification and Prediction
+    5.4 Classification by Decision Tree Induction
+    5.5 Bayesian Classification
+        5.5.1 Bayes Theorem
+        5.5.2 Naive Bayesian Classification
+    5.6 Classification by Backpropagation
+        5.6.1 A Multilayer Feed Forward Neural Network
+        5.6.2 Defining a Network Topology
+    5.7 Classification Based on Concept from Association Rule Mining
+    5.8 Other Classification Methods
+        5.8.1 K-Nearest Neighbour Classifiers
+        5.8.2 Genetic Algorithm
+        5.8.3 Rough Set Approach
+        5.8.4 Fuzzy Set Approaches
+
+
+
+Unit 6: Cluster Analysis(8)
+
+    6.1 What is Cluster Analysis?
+    6.2 Types of Data in Cluster Analysis
+    6.3 A Categorization of Major Clustering Methods
+    6.4 Classical Partitioning Methods
+        6.4.1 K-Means
+        6.4.2 K-Medoids
+    6.5 Partitioning Methods in Large Database
+        6.5.1 From K-Medoids to CLARANS
+    6.6 Hierarchical Methods
+
+
+
+

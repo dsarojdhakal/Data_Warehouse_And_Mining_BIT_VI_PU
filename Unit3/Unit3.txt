@@ -1,0 +1,181 @@
+Unit 3 : Apriori Algorithm
+
+
+1. Association Rule Mining
+    It is a method to find meaningful patterns and relationships between items in large databases.
+    It help businesses find what products are often bought together.
+    Useful for recommendations, promotions, and understanding customer behavior.
+
+    The main idea: 
+        discover rules like “If A happens, B is likely to happen.”
+        Rules are shown as X → Y where X and Y are sets of items.
+        Support measures how frequently the combined items appear together.
+        Confidence measures how often Y occurs when X occurs.
+    The process:
+        Find all frequent itemsets that meet minimum support.
+        Generate strong association rules from these itemsets with high confidence.
+    
+
+
+2. Market Basket Analysis: Mining a Roadmap
+    Market Basket Analysis shows which products are often bought together by customers.
+    It is also called frequent itemset mining or association analysis.
+    It helps stores understand what items are linked in shopping baskets.
+    This helps stores sell more and make customers happy.
+    Algorithms like Apriori help do this fast on big data.
+    Example: IF someone buys green tea, they often buy honey too.
+             The goal is to find strong rules that tell how items relate to each other.
+
+    Steps in Market Basket Analysis:
+            Collect data: Get records of what customers bought together.
+            Find frequent itemsets: Find groups of items that appear together a lot.
+            Make rules: Write rules like “If item A is bought, item B is likely bought too.”
+            Check rules: Use numbers called support and confidence to keep only good rules.
+            Use results: Put related products close, give discounts, and manage stock better.
+
+
+
+3. The Apriori Algorithm: 
+
+    a.Finding Frequent Itemsets Using Candidate Generation
+
+        The Apriori algorithm helps find frequent itemsets in big databases.
+        It works by generating candidate itemsets and checking which ones appear often enough.
+        It help businesses understand which products are often bought together.
+        It is widely used because it is simple and effective for many types of data.
+        The key idea: 
+                    If an itemset is frequent, then all its subsets must also be frequent.
+                    This idea helps reduce the number of itemsets to check, saving time.
+
+        How Apriori works step-by-step:
+                Start with single items and count how often each appears in the data.
+                Keep only the items that meet a minimum support (appear often enough).
+                Generate new candidates by combining the frequent items from the previous step.
+                Count the support for these new candidates in the database.
+                Repeat the process until no new frequent itemsets are found.
+                After finding frequent itemsets, Apriori can generate strong association rules from them.
+        
+
+
+    b. Generating Association Rules from Frequent Itemsets
+
+        After finding frequent itemsets using Apriori algorithm, the next step is to create association rules from those itemsets.
+        An association rule is written as: X → Y, meaning if items in set X are bought, then items in set Y are likely bought too.
+        We only generate rules from itemsets that meet the minimum support (frequent enough).
+        For each frequent itemset, we divide it into two parts:
+            (X): The items that appear first (IF part).
+            (Y): The items that appear together with antecedent (THEN part).
+
+        We calculate confidence for each rule:
+            Confidence = (Support of X and Y together) / (Support of X alone)
+
+            Confidence shows how often the rule is true. 
+            High confidence means rule is reliable.
+
+        We also consider support of the rule: 
+            how often X and Y appear together in all transactions.
+
+        Sometimes lift is used 
+            to measure how much more often Y appears with X than expected by chance.
+            Lift > 1 means positive association between X and Y.
+
+        Generating rules involves:
+            Selecting a frequent itemset.
+            Dividing it into all possible pairs of subsets (X and Y).
+            Calculating confidence and support for each rule.
+            Keeping the strong rules that meet confidence and support limits.
+        
+
+
+4. Improving the Efficiency of Apriori
+    Apriori can be slow because it generates many candidate itemsets and scans the database multiple times.
+    Improving efficiency is important because large databases have millions of transactions.
+
+    To improve speed and reduce work, several techniques are used:
+
+        Reduce candidate generation:
+            Use the Apriori property: 
+                if any subset of an itemset is not frequent, the itemset can be skipped.
+                This cuts down the number of candidates to check.
+        
+        Transaction reduction:
+            Remove transactions that don’t contain any frequent itemsets during later scans to reduce data size.
+        
+        Partitioning:
+            Split the database into smaller parts, find frequent itemsets in each, and combine results.
+            This reduces the memory needed and speeds up processing.
+
+        Sampling:
+            Analyze a random sample of the database to find frequent itemsets, then check them against the full data.
+            This speeds up mining but may miss some itemsets.
+        Dynamic itemset counting:
+            Add new candidate itemsets while scanning the database instead of waiting for the next pass.
+            This reduces the number of database scans.
+
+
+
+6. Mining Frequent Itemsets Without Candidate Generation
+    Traditional Apriori generates many candidate itemsets, which slows down the process.
+    Mining without candidate generation is useful for big data and real-time analysis.
+    Some newer algorithms find frequent itemsets without generating candidates explicitly.
+    The main example is the 
+
+        FP-Growth algorithm (Frequent Pattern Growth)
+            The algorithm extracts frequent itemsets directly from the FP-tree without candidate generation.
+            This avoids multiple database scans and reduces the number of itemsets to check.
+            FP-Growth is much faster and uses less memory than Apriori for large datasets.
+            It is especially good when the dataset has many frequent patterns
+        
+        Working algorith of FP-Growth.
+            Scan database → Count item frequencies and remove infrequent items (below min-support).
+            Order items → Sort each transaction’s items in descending frequency order.
+            Build FP-tree → Insert ordered transactions into the tree, sharing common prefixes.
+            Mine frequent patterns:
+                Start from each item (lowest frequency first).
+                Create its conditional pattern base (sub-transactions ending with that item).
+                Build a conditional FP-tree from this base.
+                Recursively mine the conditional FP-tree for more patterns.
+            Combine results → Merge all found patterns to get the complete set of frequent itemsets.
+
+
+
+7. Multilevel Association Rule
+    Multilevel association rules find patterns at different levels of abstraction or detail in the data.
+    For example, 
+        items can be grouped by category, brand, or specific product.
+        Rules can be discovered at 
+            a high level (like “If a customer buys any fruit, they also buy milk”) 
+            or a detailed level (like “If a customer buys Fuji apples, they also buy cheddar cheese”).
+
+    Multilevel rules help businesses analyze data more flexibly and get more useful insights.
+    Mining at multiple levels can reveal general patterns as well as specific ones.
+    Different support thresholds are often used at each level because higher-level groups tend to appear more frequently.
+    Multilevel rules help in better targeting marketing and inventory decisions.
+
+
+
+8. Approaches to Mining Multilevel Association Rules
+    There are several ways to mine association rules at multiple levels of abstraction.
+    Main approaches are:
+
+        Apriori-based approach:
+            Extends the Apriori algorithm to work with multiple levels using different support thresholds for each level.
+            Mines frequent itemsets level by level, starting from the top (general) to bottom (detailed).
+        
+        Top-down progressively deepening:
+            Starts mining rules at the highest (most general) level.
+            Then moves down to lower levels only if frequent itemsets are found at the higher level.
+            This avoids searching deep levels if no general patterns exist.
+            If electronics items is used then only go for mobile, laptop, etc.
+        
+        Post-processing approach:
+            Mines all frequent itemsets at the lowest level first.
+            Then generalizes results to higher levels.
+            Useful when detailed data is available and generalization is needed later.
+
+        Pattern-growth methods:
+            Uses tree structures like FP-tree adapted for multiple levels.
+            Mines patterns without candidate generation, improving efficiency.
+            Choosing an approach depends on data size, hierarchy complexity, and performance needs.
+            Using different minimum support values at different levels is important to avoid missing patterns.
+

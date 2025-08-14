@@ -2,7 +2,8 @@ Unit 2 : Data Warehouse and OLAP Technology
 
 
 1. Data Warehouse Architecture
-    A data warehouse is a centralized system for storing clean, organized, and integrated data from multiple sources.
+    A data warehouse is a centralized system for storing clean, organized, and 
+        integrated data from multiple sources.
     It is designed for analysis and decision-making, not daily transaction processing.
     Main Components:
         Data Sources – Operational databases, spreadsheets, APIs, external data.
@@ -22,18 +23,17 @@ Unit 2 : Data Warehouse and OLAP Technology
         Involve stakeholders – business teams, IT staff, analysts.
         Make sure the design matches business goals.
     Step 2 – Design the Data Warehouse Architecture
+        Consider scalability, cost, and security before deciding.
         Choose the type based on needs:
             Centralized – One large warehouse for the entire organization.
             Data Marts – Smaller, department-focused warehouses.
             Data Lake – Stores raw, unstructured data.
-            Cloud Warehouse – Like Amazon Redshift, Google BigQuery, Snowflake.
-            Consider scalability, cost, and security before deciding.
+            Cloud Warehouse – Like Amazon Redshift, Google BigQuery.
     Step 3 – Select Technology Stack
         Database – Choose based on data size and query needs.
         ETL Tools – Talend, Apache NiFi, Hevo, etc.
-        BI & Analytics Tools – Power BI, Tableau, Looker for visualization.
     Step 4 – Data Integration & ETL Development
-        Gather data from CRM, ERP, sales, and external APIs.
+        Gather data from CRM, sales, and external APIs.
         Automate ETL for real-time or near real-time updates.
         ETL Process:
             Extract – Pull from sources.
@@ -69,9 +69,9 @@ Unit 2 : Data Warehouse and OLAP Technology
             MOLAP – Uses multidimensional cubes for faster access.
             HOLAP – Mix of ROLAP + MOLAP.
     Top Tier – Front-End Tools
-        Interface for reports, dashboards, and ad-hoc queries.
+        Interface for reports, dashboards, and queries.
         Examples: Power BI, Tableau, Excel (OLAP mode).
-        Lets business users explore data without deep technical knowledge.
+        Business users explore data without deep technical knowledge using Top Tier.
 
 
 4. OLAP (Online Analytical Processing)
