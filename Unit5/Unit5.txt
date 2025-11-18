@@ -5,31 +5,37 @@ a. What is Classification
 
     It is a process of assigning data items in a database to predefined classes
     Predicts class of new or unknown records in a dataset
-    Supervised data mining technique is used
-    Uses attributes/features of records for classification
-    Examples in data mining:
-        Bank database → Customer risk: High / Medium / Low
-        Retail database → Customer response: Yes / No
-        Medical database → Disease: Present / Absent
-
-    Applications of classification in :
-        Fraud detection: Identify suspicious transactions from historical patterns
+    Assigns data items to predefined classes or groups.
+    Predicts the category of new or unknown records.
+    Learns from historical data to predict categories for new cases.
+    A supervised data mining method (learns from known examples).
+    Uses attributes/features of records for classification.
+    Examples:
+        Bank → Customer risk: High / Medium / Low
+        Retail → Customer response: Yes / No
+        Medical → Disease: Present / Absent
+    Applications:
+        Fraud detection: Identify suspicious transactions from past patterns
         Medical diagnosis: Detect diseases using patient records
-        Customer segmentation: Group customers for targeted marketing
+        Customer segmentation: Group customers for marketing or recommendations
 
 
 
 b. What is Prediction
 
-    It is a process of estimating a numeric or continuous value for new data based on existing data
-    Uses historical data to build a predictive model
-    Predicts unknown or future values of attributes in a dataset
-    Supervised data mining technique
-    Uses features/attributes of records for prediction
-    Examples in data mining:
-        Predicting future sales of a product
-        Estimating temperature or rainfall
-        Forecasting stock prices
+    - Prediction is the process of forecasting a continuous numeric value for new or unknown records.
+    - Estimates the likely outcome based on patterns learned from historical data.
+    - It is a supervised data mining technique (like classification) but predicts numeric values instead of categories.
+    - Uses attributes/features of records for prediction.
+    - Examples:
+        Bank → Predict customer’s future balance
+        Retail → Estimate sales for next month
+        Healthcare → Predict patient’s blood pressure or risk score
+    - Applications:
+        Stock market forecasting
+        Weather prediction
+        Sales estimation
+        Risk assessment in finance and insurance
 
 
 
@@ -45,4 +51,21 @@ c. Issues Regarding Classification and Prediction
     Model may need changes when new data comes
 
 
-d. 
+d. Classification by Decision Tree Induction
+
+    - Decision Tree is a tree-like model used to classify data into predefined classes.
+    - Each internal node represents a test on an attribute.
+    - Each branch represents an outcome of the test.
+    - Each leaf node represents a class label (decision).
+    - It is easy to understand and interpret.
+    - It handles both numeric and categorical data.
+
+    - Steps to build a decision tree:
+        1. Select the best attribute using a measure like Information Gain or Gini Index.
+        2. Split the dataset based on attribute values of the selected attribute.
+        3. Repeat the process recursively for each branch using the remaining attributes.
+        4. Stop recursion when:
+            - All data in a branch belong to the same class, or
+            - No remaining attributes, or
+            - Predefined stopping criteria are met.
+        5. Assign class labels to the leaf nodes.

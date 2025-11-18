@@ -2,14 +2,294 @@ Unit 4: Multidimensional Association Rules
 
 
 4.1 Multidimensional Association Rules
-    Extension of single-dimensional association rules.
-    Uses multiple attributes (dimensions) at the same time.
-    Each dimension represents a different feature of the dataset.
-    Finds patterns involving more than one attribute.
-    Example:
-        Single-dimensional  : {Milk} → {Bread}
-        Multidimensional    : {Milk in Store A, Age 20-30} → {Bread, Gender = Male}
-    Useful in data warehouses with fact and dimension tables.
-    Involves selecting relevant dimensions and finding frequent patterns.
-    Support and confidence are calculated across multiple attributes.
-    Helps in decision making, marketing, and customer behavior analysis.
+        Multidimensional Association Rules is extension of single-dimensional association rules.
+        It use more than one attribute or field (for example, age, income, and product).
+        Attributes can be categorical (like gender, city) or numeric (like age, salary).
+        Numeric attributes must be changed into ranges (discretized) before mining.
+        It involves selecting relevant dimensions and finding frequent patterns.
+        Support and confidence are calculated across multiple attributes.
+        It helps in decision making, marketing, and customer behavior analysis.
+        Such rules help find relations among different types of data.
+        Example:
+            buys(X, "IBM Laptop") ⇒ buys(X, "HP Printer")
+
+    Approaches/methods in Mining Multidimensional Association Rules
+    1. Using Static Discretization of Quantitative Attributes
+        Numeric data is divided into fixed ranges before mining starts.
+        These ranges do not change later (they stay the same).
+        The converted data is treated as categorical.
+        Then, the Apriori algorithm is used to find frequent patterns.
+        Example
+            If (age, income, purchases) is frequent, 
+            then (age, income) or (income, purchases) will also be frequent.
+        Data cubes make the mining faster.
+        Each cube cell represents one set of conditions (predicates).
+
+    2. Using Dynamic Discretization of Quantitative Attributes
+        Also called Quantitative Association Rule Mining.
+        Numeric data is divided into ranges during the mining process.
+        The ranges change based on how data is spread.
+        This gives more flexible and accurate results.
+        Example:
+            age(X, "20..25") ∧ income(X, "30K..41K") ⇒ buys(X, "Laptop")
+
+    3. Grid for Tuples (Distance-Based Discretization Using Clustering)
+        This method uses clustering to group similar data points
+        It is a dynamic method — intervals are made based on distance or similarity between data.
+        Mining is done on these clusters instead of fixed ranges.
+        How it works:
+            First, clustering is done to find similar groups.
+            Then, rules are found between those clusters that appear together often.
+                Clusters in the IF part are linked with clusters in the THEN part.
+                Clusters in the IF part often occur together.
+                Clusters in the THEN part also occur together.
+
+4.2 Mining Quantitative Association Rules
+
+        - It handle numeric data in datasets like Age, Income, Salary, or Quantity.
+        - Standard association rule mining works on categorical data, so numeric values must be converted into ranges or clusters.
+        - These rules help find patterns like: 
+            "Customers aged 20-25 with income 30K-40K often buy laptops".
+
+    Methods used:
+        1. Discretization
+        - Process of converting numeric values into intervals or ranges.
+        - Needed because algorithms like Apriori cannot directly handle numeric values.
+        - Two types:
+            a. Static Discretization
+                - Predefined fixed ranges are used.
+                - Example: Age 20-30, 31-40, 41-50.
+                - Simple but may miss hidden patterns if ranges are not suitable.
+            b. Dynamic Discretization
+                - Ranges are created based on data distribution during mining.
+                - More flexible and accurate.
+                - Example: Age 22-27, 28-38, 45-50 based on actual data distribution.
+
+        2. Distance-Based / Clustering Method
+            - Numeric data is grouped into clusters based on similarity or distance.
+            - Clusters are treated as categorical for mining association rules.
+            - Useful for irregular numeric data or when ranges are not obvious.
+            - Steps:
+                1. Perform clustering on numeric attributes (like k-means).
+                2. Assign cluster labels to each record.
+                3. Mine frequent itemsets using cluster labels.
+                4. Generate rules from these clusters.
+            - Example: Age Cluster A1 ∧ Income Cluster I1 ⇒ Buys Laptop
+
+        Steps to Mine Quantitative Association Rules:
+
+            1. Select numeric attributes for analysis (Age, Income, etc.).
+            2. Apply one of the discretization methods:
+                - Static: Fixed ranges
+                - Dynamic: Data-driven ranges
+                - Distance-based: Clustering
+            3. Convert numeric attributes into categorical labels.
+            4. Apply frequent itemset mining algorithm (Apriori, FP-Growth).
+            5. Calculate support:
+                - Support = (Number of records containing the item/range) / (Total records)
+            6. Generate association rules:
+                - Rule: IF <Condition(s)> THEN <Outcome>
+            7. Calculate confidence:
+                Confidence = (Number of records satisfying both IF and THEN) / (Number of records satisfying IF)
+            8. Validate and interpret rules:
+                - Accept rules with high support and confidence.
+                - Reject rules with low support or low confidence.
+
+        Example: Dynamic Discretization
+
+            Dataset:
+
+            | Customer | Age | Income | Product |
+            |----------|-----|--------|---------|
+            | C1       | 22  | 35     | Laptop  |
+            | C2       | 28  | 42     | Laptop  |
+            | C3       | 34  | 38     | Printer |
+            | C4       | 45  | 50     | Laptop  |
+            | C5       | 30  | 45     | Printer |
+            | C6       | 25  | 40     | Laptop  |
+            | C7       | 38  | 37     | Printer |
+            | C8       | 27  | 41     | Laptop  |
+
+        Solution:
+            1. Create age clusters based on distribution:
+                - 22-27: C1, C6, C8
+                - 28-38: C2, C3, C5, C7
+                - 45: C4
+            2. Create income clusters:
+                - 35-40: C1, C3, C6, C7
+                - 41-50: C2, C4, C5, C8
+            3. Transform numeric data to clusters.
+            4. Find frequent itemsets with support ≥ 50%.
+            5. Generate rules:
+                - Age 28-38 ∧ Income 41-50 ⇒ Printer, support 3/8, confidence 75%, accept
+                - Age 22-27 ∧ Income 35-40 ⇒ Laptop, support 2/8, confidence 100%, accept
+
+
+4.3 Mining Distance-Based / Clustering Association Rules
+
+        - Distance-based association rules are used when numeric data is irregular and cannot be easily divided into fixed ranges.
+        - Data points are grouped into clusters based on similarity or distance.
+        - Clusters are treated as categorical values for mining association rules.
+        - Helps discover patterns among customers or items that are “close” or “similar” in numeric attributes.
+
+        Steps to mine distance-based association rules:
+
+            1. Choose numeric attributes (e.g., Age, Income, Quantity).
+            2. Apply a clustering algorithm (e.g., k-means, hierarchical) to group similar records.
+            3. Assign cluster labels to each record (e.g., Cluster A1, I1).
+            4. Mine frequent itemsets using cluster labels instead of raw numeric values.
+            5. Generate association rules in the form:
+            IF <cluster combination> THEN <product or outcome>.
+            6. Calculate support:
+                - Support = Number of records containing the cluster combination / Total records
+            7. Calculate confidence:
+                - Confidence = Number of records satisfying IF and THEN / Number of records satisfying IF
+            8. Accept rules with high support and confidence, reject others.
+
+
+     -->(*) Numerical Example: Dataset of 8 customers
+
+            | Customer | Age | Income | Product |
+            |----------|-----|--------|---------|
+            | C1       | 22  | 35     | Laptop  |
+            | C2       | 28  | 42     | Laptop  |
+            | C3       | 34  | 38     | Printer |
+            | C4       | 45  | 50     | Laptop  |
+            | C5       | 30  | 45     | Printer |
+            | C6       | 25  | 40     | Laptop  |
+            | C7       | 38  | 37     | Printer |
+            | C8       | 27  | 41     | Laptop  |
+
+        Step 1: Cluster numeric data
+
+            - Age clusters:
+            - Cluster A1: 22-27 → C1, C6, C8
+            - Cluster A2: 28-38 → C2, C3, C5, C7
+            - Cluster A3: 45 → C4
+            - Income clusters:
+            - Cluster I1: 35-40 → C1, C3, C6, C7
+            - Cluster I2: 41-50 → C2, C4, C5, C8
+
+        Step 2: Transform numeric data into clusters
+
+            | Customer | Age Cluster | Income Cluster | Product |
+            |----------|------------|----------------|---------|
+            | C1       | A1         | I1             | Laptop  |
+            | C2       | A2         | I2             | Laptop  |
+            | C3       | A2         | I1             | Printer |
+            | C4       | A3         | I2             | Laptop  |
+            | C5       | A2         | I2             | Printer |
+            | C6       | A1         | I1             | Laptop  |
+            | C7       | A2         | I1             | Printer |
+            | C8       | A1         | I2             | Laptop  |
+
+        Step 3: Find frequent itemsets (support ≥ 50%)
+
+            - Age Cluster A1 → 3/8 = 37.5% reject  
+            - Age Cluster A2 → 4/8 = 50% accept  
+            - Age Cluster A3 → 1/8 = 12.5% reject  
+            - Income Cluster I1 → 4/8 = 50% accept  
+            - Income Cluster I2 → 4/8 = 50% accept  
+            - Product Laptop → 5/8 = 62.5% accept  
+            - Product Printer → 3/8 = 37.5% reject  
+
+        Step 4: Generate association rules and calculate confidence
+
+            Rule 1: Age A1 ∧ Income I1 ⇒ Laptop  
+                - Customers in A1 ∧ I1 = C1, C6  
+                - Laptop bought = 2  
+                - Confidence = 2/2 = 100% accept  
+
+            Rule 2: Age A1 ∧ Income I2 ⇒ Laptop  
+                - Customers in A1 ∧ I2 = C8  
+                - Laptop bought = 1  
+                - Confidence = 1/1 = 100% accept  
+
+            Rule 3: Age A2 ∧ Income I1 ⇒ Printer  
+                - Customers in A2 ∧ I1 = C3, C7  
+                - Printer bought = 2  
+                - Confidence = 2/2 = 100% accept  
+
+            Rule 4: Age A2 ∧ Income I2 ⇒ Printer  
+                - Customers in A2 ∧ I2 = C5  
+                - Printer bought = 1  
+                - Confidence = 1/1 = 100% accept  
+
+            Rule 5: Age A2 ∧ Income I2 ⇒ Laptop  
+                - Customers in A2 ∧ I2 = C2  
+                - Laptop bought = 1  
+                - Confidence = 1/1 = 100% accept  
+
+            Rule 6: Age A3 ∧ Income I2 ⇒ Laptop  
+                - Customers in A3 ∧ I2 = C4  
+                - Laptop bought = 1  
+                - Confidence = 1/1 = 100% accept  
+
+        Step 5: Interpretation
+            - Distance-based rules show patterns based on clusters, not fixed ranges.  
+            - Combining clusters of Age and Income gives stronger patterns than single attributes.  
+            - Helps identify which groups of customers are likely to buy specific products.  
+            - Useful for marketing, product recommendations, and customer behavior analysis.
+
+
+4.4 From Association Mining to Correlation Analysis
+
+        - Association mining finds frequent patterns or rules but does not measure how strong the relationship is between items.
+        - Correlation analysis measures how strongly items are related to each other.
+        - Helps understand whether the occurrence of one item affects the occurrence of another.
+
+        - Support: Fraction of records containing both items.
+        - Confidence: Probability that if one item occurs, the other also occurs.
+        - Lift: Measures how much more often the items occur together than expected by chance.
+
+              Lift = Confidence / Probability of THEN item
+
+            - Lift > 1 → Positive correlation, items appear together more often than random.
+            - Lift = 1 → No correlation, items appear together by chance.
+            - Lift < 1 → Negative correlation, items appear together less than expected.
+
+        Steps to perform correlation analysis:
+            1. Identify rules from association mining.
+            2. Calculate support and confidence for each rule.
+            3. Compute lift for the rule:
+            - Lift = Confidence / Probability of THEN item
+            4. Accept rules with lift > 1; reject rules with lift ≤ 1.
+            5. Use correlation to :
+                refine marketing strategies, 
+                product recommendations, and 
+                decision-making.
+
+
+        Example Dataset:
+
+        | Customer | Age | Income | Product |
+        |----------|-----|--------|---------|
+        | C1       | 22  | 35     | Laptop  |
+        | C2       | 28  | 42     | Laptop  |
+        | C3       | 34  | 38     | Printer |
+        | C4       | 45  | 50     | Laptop  |
+        | C5       | 30  | 45     | Printer |
+        | C6       | 25  | 40     | Laptop  |
+        | C7       | 38  | 37     | Printer |
+        | C8       | 27  | 41     | Laptop  |
+
+        Step 1: Association Rule from Mining
+            - Rule: Age 22-27 ∧ Income 35-40 ⇒ Laptop
+            - Support = 2/8 = 25%
+            - Confidence = 2/2 = 100%
+
+        Step 2: Compute Lift
+            - Probability(Laptop overall) = 5/8 = 0.625
+            - Lift = Confidence / Probability(Laptop) = 1 / 0.625 = 1.6 → Positive correlation → accept
+
+        Step 3: Another Rule
+            - Rule: Age 28-38 ∧ Income 41-50 ⇒ Printer
+            - Support = 2/8 = 25%
+            - Confidence = 2/2 = 100%
+            - Probability(Printer overall) = 3/8 = 0.375
+            - Lift = 1 / 0.375 = 2.66 → Strong positive correlation → accept
+
+        Step 4: Interpretation
+            - Lift > 1 means the items appear together more than expected by chance.  
+            - Lift < 1 means the items appear together less than expected.  
+            - Lift = 1 means no correlation.  
