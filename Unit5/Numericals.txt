@@ -1,0 +1,79 @@
+
+Question 1: A company has 3 types of products: A, B, and C.
+            30% of products are type A, 50% are type B, 20% are type C.
+            Defective rates for each type:
+                Type A: 1% defective
+                Type B: 2% defective
+                Type C: 3% defective
+            If a randomly selected product is defective, what is the probability that it is type B?
+
+    Solution:
+            Step 1: Define Events
+                    Let A = Product is type A
+                    Let B = Product is type B
+                    Let C = Product is type C
+                    Let D = Product is defective
+
+                    We need: P(B|D)
+
+            Step 2: Write Bayes Formula
+                    P(B|D) = (P(D|B) * P(B)) / P(D)
+
+            Step 3: Total probability of defect
+                    P(D) = P(D|A)*P(A) + P(D|B)*P(B) + P(D|C)*P(C)
+
+                    Given:
+                        P(A) = 0.3, P(B) = 0.5, P(C) = 0.2
+                        P(D|A) = 0.01, P(D|B) = 0.02, P(D|C) = 0.03
+
+                    Calculate P(D):
+                        P(D) = (0.01 * 0.3) + (0.02 * 0.5) + (0.03 * 0.2)
+                        P(D) = 0.003 + 0.01 + 0.006
+                        P(D) = 0.019
+
+            Step 4: Apply Bayes Theorem
+                    P(B|D) = (P(D|B) * P(B)) / P(D)
+                    P(B|D) = (0.02 * 0.5) / 0.019
+                    P(B|D) = 0.01 / 0.019
+                    P(B|D) ≈ 0.526
+
+        Answer: P(B|D) ≈ 0.526 or 52.6%
+
+
+Question 2: A hospital has 2 types of patients: Male and Female.
+            40% of patients are male, 60% are female.
+            Probability of having a certain disease:
+                Male: 5% have the disease
+                Female: 2% have the disease
+            If a randomly selected patient is found to have the disease, what is the probability that the patient is male?
+
+    Solution:
+            Step 1: Define Events
+                    Let M = Patient is Male
+                    Let F = Patient is Female
+                    Let D = Patient has the disease
+
+                    We need: P(M|D)
+
+            Step 2: Write Bayes Formula
+                    P(M|D) = (P(D|M) * P(M)) / P(D)
+
+            Step 3: Total probability of disease
+                    P(D) = P(D|M)*P(M) + P(D|F)*P(F)
+
+                    Given:
+                        P(M) = 0.4, P(F) = 0.6
+                        P(D|M) = 0.05, P(D|F) = 0.02
+
+                    Calculate P(D):
+                        P(D) = (0.05 * 0.4) + (0.02 * 0.6)
+                        P(D) = 0.02 + 0.012
+                        P(D) = 0.032
+
+            Step 4: Apply Bayes Theorem
+                    P(M|D) = (P(D|M) * P(M)) / P(D)
+                    P(M|D) = (0.05 * 0.4) / 0.032
+                    P(M|D) = 0.02 / 0.032
+                    P(M|D) ≈ 0.625
+
+        Answer:  P(M|D) ≈ 0.625 or 62.5%

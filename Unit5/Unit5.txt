@@ -1,71 +1,159 @@
 Unit 5: Classification and Prediction(9)
 
 
-a. What is Classification
+    a. What is Classification
 
-    It is a process of assigning data items in a database to predefined classes
-    Predicts class of new or unknown records in a dataset
-    Assigns data items to predefined classes or groups.
-    Predicts the category of new or unknown records.
-    Learns from historical data to predict categories for new cases.
-    A supervised data mining method (learns from known examples).
-    Uses attributes/features of records for classification.
-    Examples:
-        Bank → Customer risk: High / Medium / Low
-        Retail → Customer response: Yes / No
-        Medical → Disease: Present / Absent
-    Applications:
-        Fraud detection: Identify suspicious transactions from past patterns
-        Medical diagnosis: Detect diseases using patient records
-        Customer segmentation: Group customers for marketing or recommendations
-
-
-
-b. What is Prediction
-
-    - Prediction is the process of forecasting a continuous numeric value for new or unknown records.
-    - Estimates the likely outcome based on patterns learned from historical data.
-    - It is a supervised data mining technique (like classification) but predicts numeric values instead of categories.
-    - Uses attributes/features of records for prediction.
-    - Examples:
-        Bank → Predict customer’s future balance
-        Retail → Estimate sales for next month
-        Healthcare → Predict patient’s blood pressure or risk score
-    - Applications:
-        Stock market forecasting
-        Weather prediction
-        Sales estimation
-        Risk assessment in finance and insurance
+            It is a process of assigning data items in a database to predefined classes
+            Predicts class of new or unknown records in a dataset
+            Assigns data items to predefined classes or groups.
+            Predicts the category of new or unknown records.
+            Learns from historical data to predict categories for new cases.
+            A supervised data mining method (learns from known examples).
+            Uses attributes/features of records for classification.
+            Examples:
+                Bank → Customer risk: High / Medium / Low
+                Retail → Customer response: Yes / No
+                Medical → Disease: Present / Absent
+            Applications:
+                Fraud detection: Identify suspicious transactions from past patterns
+                Medical diagnosis: Detect diseases using patient records
+                Customer segmentation: Group customers for marketing or recommendations
 
 
 
-c. Issues Regarding Classification and Prediction
+    b. What is Prediction
 
-    Data may be incomplete, wrong, or messy
-    It is hard to choose which features are important
-    Model may fit training data too much and fail on new data (overfitting)
-    Model may be too simple and miss patterns (underfitting)
-    Some classes may have very few examples, causing bias
-    Large data makes processing slow and difficult
-    It is difficult to check if the model is really accurate
-    Model may need changes when new data comes
+            - Prediction is the process of forecasting a continuous numeric value for new or unknown records.
+            - Estimates the likely outcome based on patterns learned from historical data.
+            - It is a supervised data mining technique (like classification) but predicts numeric values instead of categories.
+            - Uses attributes/features of records for prediction.
+            - Examples:
+                Bank → Predict customer’s future balance
+                Retail → Estimate sales for next month
+                Healthcare → Predict patient’s blood pressure or risk score
+            - Applications:
+                Stock market forecasting
+                Weather prediction
+                Sales estimation
+                Risk assessment in finance and insurance
 
 
-d. Classification by Decision Tree Induction
 
-    - Decision Tree is a tree-like model used to classify data into predefined classes.
-    - Each internal node represents a test on an attribute.
-    - Each branch represents an outcome of the test.
-    - Each leaf node represents a class label (decision).
-    - It is easy to understand and interpret.
-    - It handles both numeric and categorical data.
+    c. Issues Regarding Classification and Prediction
 
-    - Steps to build a decision tree:
-        1. Select the best attribute using a measure like Information Gain or Gini Index.
-        2. Split the dataset based on attribute values of the selected attribute.
-        3. Repeat the process recursively for each branch using the remaining attributes.
-        4. Stop recursion when:
-            - All data in a branch belong to the same class, or
-            - No remaining attributes, or
-            - Predefined stopping criteria are met.
-        5. Assign class labels to the leaf nodes.
+            Data may be incomplete, wrong, or messy
+            It is hard to choose which features are important
+            Model may fit training data too much and fail on new data (overfitting)
+            Model may be too simple and miss patterns (underfitting)
+            Some classes may have very few examples, causing bias
+            Large data makes processing slow and difficult
+            It is difficult to check if the model is really accurate
+            Model may need changes when new data comes
+
+
+    d. Classification by Decision Tree Induction
+
+            - Decision Tree is a tree-like model used to classify data into predefined classes.
+            - Each internal node represents a test on an attribute.
+            - Each branch represents an outcome of the test.
+            - Each leaf node represents a class label (decision).
+            - It is easy to understand and interpret.
+            - It handles both numeric and categorical data.
+
+            - Decision Tree Induction is a method used to classify data by creating a tree.
+            - The tree helps decide which class a new item belongs to by asking simple questions at each step.
+            - It is easy to understand.
+            - Works well on many types of data.
+            - Produces rules that humans can read.
+
+            1. Root Node:  The first and most important attribute used to start the decision.
+
+            2. Internal Nodes:  Middle steps where we ask more questions.
+
+            3. Leaf Nodes:  Final output (class label like Yes/No, Pass/Fail, Buy/Not Buy).
+
+            4. Entropy:  
+                    A number that shows how mixed the data is.  
+                    Mixed classes → high entropy  
+                    Pure classes → low entropy
+
+                    Formula:  Entropy(S) = - Σ p(i)  log2(p(i))
+
+            5. Information Gain:  
+                    Tells us which attribute gives the best split.  
+                    Higher information gain = better attribute.
+
+                    Formula:  Gain(S, A) = Entropy(S) - Weighted entropy after splitting on A.
+
+            Example idea:
+                    Is Age = Youth?
+                    → If yes, go right
+                    → If no, go left
+                    Continue until you reach a final class label.
+
+
+        Steps of Decision Tree Induction (Iterative Dichotomiser 3 (ID3) Algorithms)
+
+            Step 1: Start with the entire training dataset  
+                    Look at all attributes and the class labels.
+
+            Step 2: Calculate entropy of the dataset  
+                    This shows how mixed the class labels are.
+
+            Step 3: For every attribute, calculate information gain  
+                    Check which attribute gives the best separation of the classes.
+
+            Step 4: Select the attribute with the highest information gain  
+                    This becomes the root node of the tree.
+
+            Step 5: Split the data based on that attribute  
+                    Each value becomes a branch.
+
+            Step 6: Repeat the same process for each branch  
+                    Use remaining attributes.  
+                    Calculate entropy again.  
+                    Calculate information gain again.  
+                    Choose best attribute.  
+                    Split again.
+
+            Step 7: Stop when:
+                    - All samples in a branch belong to the same class  
+                    - No attributes left  
+                    - No data left  
+
+                    Create a leaf node with the final class label.
+
+            Step 8: Final Decision Tree  
+                    This tree can now classify new data.
+
+
+    e. Bayes Theorem
+
+            Bayes Theorem is a fundamental formula used in probability and classification.
+            It helps to find the probability of a class given some observed data.
+
+            It updates prior knowledge with new evidence.
+            Start with what you already believe (prior).
+            Add the effect of new information (likelihood).
+            Get an updated belief (posterior).
+            It forms the foundation of Bayesian Classification.
+            It handles the uncertainty using probability.
+            It works well even with small datasets.
+            It provides clear mathematical reasoning for predictions.
+
+
+            Formula:
+                P(C | X) = [ P(X | C) * P(C) ] / P(X)
+
+            Where:
+                - P(C | X): Posterior probability  
+                    Probability of class C after observing data X.
+                
+                - P(X | C): Likelihood  
+                    Probability of observing X if the class is C.
+                
+                - P(C): Prior probability  
+                    Original probability of class C before seeing the data.
+                
+                - P(X): Evidence  
+                    Overall probability of observing X (acts as a normalizing term).
