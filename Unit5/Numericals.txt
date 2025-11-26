@@ -40,6 +40,7 @@ Question 1: A company has 3 types of products: A, B, and C.
         Answer: P(B|D) ≈ 0.526 or 52.6%
 
 
+
 Question 2: A hospital has 2 types of patients: Male and Female.
             40% of patients are male, 60% are female.
             Probability of having a certain disease:
@@ -77,3 +78,73 @@ Question 2: A hospital has 2 types of patients: Male and Female.
                     P(M|D) ≈ 0.625
 
         Answer:  P(M|D) ≈ 0.625 or 62.5%
+
+
+
+
+Question 3: A data analyst wants to classify a new data point using the K-Nearest 
+                Neighbour (K-NN) classification method. The dataset contains the following records:
+
+                Record   X   Y   Class
+                R1       2   4    A
+                R2       4   2    A
+                R3       4   4    B
+                R4       6   4    B
+
+                The new data point to classify is: P = (5, 3)
+                        1. Calculate the Euclidean distance between point P and all training records.
+                        2. Consider K = 3. Select the 3 nearest neighbors.
+                        3. Determine the class of point P using majority voting.
+                        4. Write the final classification result.
+
+        Solution:
+
+                Step 1: Calculate Euclidean Distance
+                        Formula: d = sqrt((x2 - x1)^2 + (y2 - y1)^2)
+
+                        Distance from P to R1 (2,4):
+                              d = sqrt((5 - 2)^2 + (3 - 4)^2)
+                                = sqrt(3^2 + (-1)^2)
+                                = sqrt(9 + 1)
+                                = sqrt(10)
+                                Distance ≈ 3.16
+
+                        Distance from P to R2 (4,2):
+                              d = sqrt((5 - 4)^2 + (3 - 2)^2)
+                                = sqrt(1^2 + 1^2)
+                                = sqrt(2)
+                                Distance ≈ 1.41
+
+                        Distance from P to R3 (4,4):
+                              d = sqrt((5 - 4)^2 + (3 - 4)^2)
+                                = sqrt(1^2 + (-1)^2)
+                                = sqrt(2)
+                                Distance ≈ 1.41
+
+                        Distance from P to R4 (6,4):
+                              d = sqrt((5 - 6)^2 + (3 - 4)^2)
+                                = sqrt((-1)^2 + (-1)^2)
+                                = sqrt(2)
+                                Distance ≈ 1.41
+
+                Step 2: Choose K = 3 Nearest Neighbors
+                        Distances:
+                                R1 = 3.16 (A)
+                                R2 = 1.41 (A)
+                                R3 = 1.41 (B)
+                                R4 = 1.41 (B)
+
+                        Sorted (smallest distance first):
+                                1. R2 (A)
+                                2. R3 (B)
+                                3. R4 (B)
+
+                        These are the 3 nearest neighbors.
+
+                Step 3: Majority Voting
+                        A: 1
+                        B: 2
+                        Majority class = B
+
+                Step 4: Final Classification
+                        The new point P = (5, 3) belongs to: Class B
