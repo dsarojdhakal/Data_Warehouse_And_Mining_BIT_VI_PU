@@ -215,3 +215,7 @@ Unit 3 : Apriori Algorithm
             Mine frequent patterns directly by growing them from the tree.
 
         For example: If FP-tree shows frequent pattern {Mobile, Charger} → extend to {Samsung Mobile, Samsung Charger}.
+
+
+        .
+        
