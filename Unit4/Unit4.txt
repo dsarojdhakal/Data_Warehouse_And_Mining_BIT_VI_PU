@@ -293,3 +293,7 @@ Unit 4: Multidimensional Association Rules
             - Lift > 1 means the items appear together more than expected by chance.  
             - Lift < 1 means the items appear together less than expected.  
             - Lift = 1 means no correlation.  
+
+
+
+.

@@ -148,3 +148,7 @@ Question 3: A data analyst wants to classify a new data point using the K-Neares
 
                 Step 4: Final Classification
                         The new point P = (5, 3) belongs to: Class B
+
+
+
+.
