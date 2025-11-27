@@ -151,4 +151,21 @@ Question 3: A data analyst wants to classify a new data point using the K-Neares
 
 
 
-.
+
+Question 4: A data analyst wants to classify a new data point using the K-Nearest 
+                Neighbour (K-NN) classification method. The dataset contains the following records:
+
+                Record   X   Y   Class
+                R1       2   4    A
+                R2       4   2    A
+                R3       4   4    B
+                R4       6   4    B
+                R5       1   5    B 
+                R6       5   5    A
+                R7       3   6    B
+
+                The new data point to classify is: P = (4, 3)
+                        1. Calculate the Euclidean distance between point P and all training records.
+                        2. Consider K = 5. Select the 3 nearest neighbors.
+                        3. Determine the class of point P using majority voting.
+                        4. Write the final classification result.

@@ -338,10 +338,11 @@ Unit 5: Classification and Prediction(9)
                                 Combine votes of multiple matching rules using weights based on support or confidence.
 
                         3. Majority Voting:
-                                Each rule votes for a class; the class with most votes is selected.
+                                Each rule votes for a class, the class with most votes is selected.
 
                         4. Rule Ordering:
-                                Rules are sorted by confidence or support. The first matching rule is applied.
+                                Rules are sorted by confidence or support. 
+                                The first matching rule is applied.
 
                         5. Class Probability Method:
                                 Choose the class with the highest summed confidence from all matching rules.
@@ -440,7 +441,8 @@ Unit 5: Classification and Prediction(9)
 
 
         5.8.3 Rough Set Approach
-                - The Rough Set Approach is a mathematical framework for handling imprecise or uncertain data.  
+                - The Rough Set Approach is a mathematical framework for handling imprecise or uncertain data. 
+                - It is used for classification and to find the hidden pattern in any data set. 
                 - It is fully data-driven and does not require prior knowledge such as probability 
                   distributions or membership degrees.  
                 - Rules generated are easy to understand and apply.  
@@ -482,6 +484,44 @@ Unit 5: Classification and Prediction(9)
                                 - Rule strength (confidence)  
                                 - Specificity (more precise rules)  
                                 - Voting or majority approach  
+
+
+                Reducts:
+                        - Reducts are the smallest set of attributes that can classify the data as effectively as using all attributes.
+                        - Think of Reducts as different “paths” that can lead to the correct classification.
+                        - They help reduce data dimensionality while retaining classification power.
+                        1. Reducts remove redundant attributes, simplifying the dataset.
+                        2. Multiple reducts can exist for the same dataset; choosing one depends on the application.
+                        3. Reducts help improve computational efficiency because fewer attributes need to be analyzed.
+                        4. They preserve the ability to generate the same decision rules as the full attribute set.
+                        5. Reducts are automatically identified using Rough Set algorithms, without prior knowledge or assumptions.
+
+                        How Reducts are Calculated:
+                                1. Start with the full set of attributes from the decision table.
+                                2. Check which attributes are essential for distinguishing objects in different decision classes.
+                                3. Remove redundant attributes one by one and see if the classification ability remains the same:
+                                - If removing an attribute does not change classification, it is redundant.
+                                - If removing it decreases classification accuracy, it is essential.
+                                4. Continue this process until no more attributes can be removed without losing classification power.
+                                5. Result: The remaining minimal set of attributes is a Reduct.
+
+                Core:
+                        Core is the set of indispensable attributes that appear in all possible reducts.
+                        Core is the “road that all paths must go through” — it is unavoidable.
+                        It identifies attributes that are absolutely necessary for classification.
+                        If an attribute is in the Core, removing it will always reduce the classification ability, no matter which reduct you choose.
+                        1. Core attributes cannot be removed without losing essential information.
+                        2. They are critical for understanding which features truly affect decisions.
+                        3. Core provides a foundation for generating decision rules.
+                        4. If the core is large, the dataset may have less redundancy; if small, many attributes are optional.
+                        5. Core helps in feature selection and explains the importance of attributes to humans clearly.
+
+                        How Core is Calculated:
+                                1. Identify all possible reducts of the dataset.
+                                2. Find the common attributes that appear in every reduct.
+                                3. hese common attributes form the Core, as they are indispensable for classification.
+
+
 
                                         
         5.8.4 Fuzzy Set Approaches
