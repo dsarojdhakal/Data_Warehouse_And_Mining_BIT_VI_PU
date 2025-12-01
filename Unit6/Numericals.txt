@@ -1,0 +1,252 @@
+Question 1: Perform K-Means clustering on the following dataset to group the customers into 3 clusters based on age and amount. 
+            Use Euclidean distance as the metric and show all steps.
+
+                Sr_no   Age     Amount
+                C1      22      4000
+                C2      28      7000
+                C3      35      6000
+                C4      40      9000
+
+        Solution:
+            Step 1: Decide the number of clusters
+                    Number of clusters, k = 3.
+
+            Step 2: Initialize cluster centroids
+                    Randomly select three initial centroids:
+                        Cluster 1 centroid: C1 (22, 4000)
+                        Cluster 2 centroid: C2 (28, 7000)
+                        Cluster 3 centroid: C3 (35, 6000)
+
+            Step 3: Assign each data point to the nearest cluster
+                    calculate Euclidean distance: 
+                        d = √((Age1 - Age2)^2 + (Amount1 - Amount2)^2)
+
+                Assignments based on minimum distance:
+                    Cluster 1: C1
+                    Cluster 2: C2
+                    Cluster 3: C3, C4
+
+            Step 4: Recalculate centroids
+                - Cluster 1: C1 → Centroid = (22, 4000)
+                - Cluster 2: C2 → Centroid = (28, 7000)
+                - Cluster 3: C3, C4 → Centroid = ((35+40)/2, (6000+9000)/2) = (37.5, 7500)
+
+            Step 5: Reassign points based on new centroids
+                - calculate distances to new centroids
+                - Assignments remain unchanged:
+                    Cluster 1: C1
+                    Cluster 2: C2
+                    Cluster 3: C3, C4
+
+            Step 6: Check centroid stability
+                - No change in assignments → Algorithm converges
+
+            Step 7: Final Cluster Assignments
+                - Cluster 1: C1
+                - Cluster 2: C2
+                - Cluster 3: C3, C4
+
+
+
+Question 2 :Perform K-Means clustering on the following dataset to group the customers into 2 clusters based on age and amount. 
+           Use Euclidean distance as the metric and show all steps.The dataset is given below:
+
+            Sr_no   Age     Amount
+            C1      25      5000
+            C2      30      6000
+            C3      28      5500
+            C4      35      8000
+            C5      40      9000
+            C6      45      8500
+            C7      33      7000
+
+    Solution:
+        Step 1: Decide the number of clusters
+             Let's choose k = 2 clusters.
+
+        Step 2: Initialize cluster centroids
+            - Randomly select two initial centroids:
+                Cluster 1 centroid: C1 (Age=25, Amount=5000)
+                Cluster 2 centroid: C5 (Age=40, Amount=9000)
+
+        Step 3: Assign each data point to the nearest cluster
+            - calculate Euclidean distance to each centroid:
+            
+            Distance formula: 
+                d = √((Age1 - Age2)^2 + (Amount1 - Amount2)^2)
+
+            Distances to Cluster 1 (C1):
+                C1: d = 0 → Cluster 1
+                C2: √((30-25)^2 + (6000-5000)^2) = √(25 + 1000000) ≈ 1000.01 → Cluster 1
+                C3: √((28-25)^2 + (5500-5000)^2) = √(9 + 250000) ≈ 500.01 → Cluster 1
+                C4: √((35-25)^2 + (8000-5000)^2) = √(100 + 9000000) ≈ 3000.01 → Cluster 2
+                C5: √((40-25)^2 + (9000-5000)^2) = √(225 + 16000000) ≈ 4000.03 → Cluster 2
+                C6: √((45-25)^2 + (8500-5000)^2) = √(400 + 12250000) ≈ 3500.06 → Cluster 2
+                C7: √((33-25)^2 + (7000-5000)^2) = √(64 + 4000000) ≈ 2000.02 → Cluster 2
+
+        Step 4: Recalculate centroids
+            - Cluster 1: C1, C2, C3
+                Mean Age = (25+30+28)/3 ≈ 27.67
+                Mean Amount = (5000+6000+5500)/3 ≈ 5500
+                New centroid = (27.67, 5500)
+            - Cluster 2: C4, C5, C6, C7
+                Mean Age = (35+40+45+33)/4 = 38.25
+                Mean Amount = (8000+9000+8500+7000)/4 = 8125
+                New centroid = (38.25, 8125)
+
+        Step 5: Reassign points based on new centroids
+            - calculate distance of each point to the new centroids:
+
+            Distances to Cluster 1 (27.67, 5500):
+                C1: √((25-27.67)^2 + (5000-5500)^2) ≈ 500.01 → Cluster 1
+                C2: √((30-27.67)^2 + (6000-5500)^2) ≈ 500.01 → Cluster 1
+                C3: √((28-27.67)^2 + (5500-5500)^2) ≈ 0.33 → Cluster 1
+                C4: √((35-27.67)^2 + (8000-5500)^2) ≈ 2500.05 → Cluster 2
+                C5: √((40-27.67)^2 + (9000-5500)^2) ≈ 3500.04 → Cluster 2
+                C6: √((45-27.67)^2 + (8500-5500)^2) ≈ 3000.03 → Cluster 2
+                C7: √((33-27.67)^2 + (7000-5500)^2) ≈ 1500.02 → Cluster 2
+
+        Step 6: Check centroid stability
+            - Cluster assignments did not change from the previous step.
+            - Algorithm converges; final clusters are:
+
+                Cluster 1: C1, C2, C3
+                Cluster 2: C4, C5, C6, C7
+
+
+
+
+Question 3 :(CLARANS Numerical Example)
+            Perform CLARANS clustering for the following dataset using Euclidean distance.
+            (k = 2 medoids, MAXneigh = 3 and numlocal = 1)
+
+                P1 = (2, 3)
+                P2 = (3, 3)
+                P3 = (6, 8)
+                P4 = (7, 8)
+                P5 = (2, 2)
+                P6 = (8, 8)
+
+            
+    Solution:
+
+        Step 1: Randomly select initial medoids
+                Assume chosen:
+                    Medoid 1 = P1
+                    Medoid 2 = P3
+                Current medoids: M = {P1, P3}
+
+        Step 2: Compute initial cost
+                Distances to P1:
+                    d(P1,P1)=0
+                    d(P2,P1)=1
+                    d(P3,P1)=√41≈6.40
+                    d(P4,P1)=√50≈7.07
+                    d(P5,P1)=1
+                    d(P6,P1)=√61≈7.81
+
+                Distances to P3:
+                    d(P1,P3)=6.40
+                    d(P2,P3)=√34≈5.83
+                    d(P3,P3)=0
+                    d(P4,P3)=1
+                    d(P5,P3)=√52≈7.21
+                    d(P6,P3)=2
+
+                Cluster assignment:
+                    C1 (medoid P1): P1, P2, P5
+                    C2 (medoid P3): P3, P4, P6
+
+                Total cost:
+                    C1 = 0 + 1 + 1 = 2
+                    C2 = 0 + 1 + 2 = 3
+                Initial cost = 5
+
+        Step 3: Randomized neighborhood search
+                Stop after MAXneigh=3 non-improving swaps.
+
+                Medoids: P1, P3
+                Non-medoids: P2, P4, P5, P6
+
+
+            Random Swap Attempt #1:
+                    Swap P1 with P4
+                    New medoids = {P4, P3}
+
+                Distances to P4:
+                    d(P1,P4)=7.07
+                    d(P2,P4)=6.40
+                    d(P3,P4)=1
+                    d(P4,P4)=0
+                    d(P5,P4)=7.81
+                    d(P6,P4)=1
+
+                Assignments:
+                    To P4: P3, P4, P6
+                    To P3: P1, P2, P5
+
+                Cost:
+                    Cluster P4 = 1 + 0 + 1 = 2
+                    Cluster P3 = 6.40 + 5.83 + 7.21 = 19.44
+                Total = 21.44 (worse)
+                Reject swap
+                Non-improvement = 1
+
+        Random Swap Attempt #2:
+                Swap P3 with P2
+                New medoids = {P1, P2}
+
+            Distances to P2:
+                d(P1,P2)=1
+                d(P2,P2)=0
+                d(P3,P2)=5.83
+                d(P4,P2)=6.40
+                d(P5,P2)=1.41
+                d(P6,P2)=7.07
+
+            Assignments:
+                To P1: P1, P5
+                To P2: P2
+                Far points (P3,P4,P6) choose nearest of P1,P2
+
+            Cost:
+                Cluster P1 = 0 + 1 = 1
+                Cluster P2 = 0
+                P3 = 5.83
+                P4 = 6.40
+                P6 = 7.07
+            Total = 20.30 (worse)
+            Reject swap
+            Non-improvement = 2
+
+        Random Swap Attempt #3:
+                Swap P1 with P6
+                New medoids = {P6, P3}
+
+            Distances to P6:
+                d(P1,P6)=7.81
+                d(P2,P6)=7.07
+                d(P3,P6)=2
+                d(P4,P6)=1
+                d(P5,P6)=8.49
+                d(P6,P6)=0
+
+            Assignments:
+                To P3: P1, P2, P5, P3
+                To P6: P4, P6
+
+            Cost:
+                Cluster P3 = 6.40 + 5.83 + 7.21 + 0 = 19.44
+                Cluster P6 = 1 + 0 = 1
+            Total = 20.44 (worse)
+            Reject swap
+            Non-improvement = 3
+
+            MAXneigh reached → Stop search.
+
+    Final Result:
+                Final medoids = {P1, P3}
+                Final cost = 5
+                Final clusters:
+                    C1 = {P1, P2, P5}
+                    C2 = {P3, P4, P6}
