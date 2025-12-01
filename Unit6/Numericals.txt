@@ -48,6 +48,7 @@ Question 1: Perform K-Means clustering on the following dataset to group the cus
 
 
 
+
 Question 2 :Perform K-Means clustering on the following dataset to group the customers into 2 clusters based on age and amount. 
            Use Euclidean distance as the metric and show all steps.The dataset is given below:
 
